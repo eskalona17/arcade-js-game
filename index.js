@@ -19,11 +19,11 @@ window.onload = function () {
       var: (laserAudio = document.createElement("audio")),
       file: "assets/Laser.mp3",
     },
-    {
-      id: "boom-audio",
-      var: (boomAudio = document.createElement("audio")),
-      file: "assets/Boom.png",
-    },
+    // {
+    //   id: "boom-audio",
+    //   var: (boomAudio = document.createElement("audio")),
+    //   file: "assets/Boom.png",
+    // },
   ]);
 };
 

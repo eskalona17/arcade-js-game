@@ -4,12 +4,12 @@ class Gui {
     this.ctx = null;
     this.resources = null;
     this.resourcesToLoad = 0;
-    this.gameloop = new Gameloop(game)
+    this.gameloop = new GameLoop(game);
   }
 
   resize() {
     if (this.cnv) {
-      this.cnv.width = window.innerHeight;
+      this.cnv.width = window.innerWidth;
       this.cnv.height = window.innerHeight;
     }
   }
@@ -47,30 +47,27 @@ class Gui {
       this.showScreen("start");
     }
   }
-
   beginLoadingImage(imgVar, fileName) {
-    imgVar.onload = () => {
-      this.launchIfReady();
-      imgVariable.src = fileName;
-    };
+    imgVar.onload = () => this.launchIfReady();
+    imgVar.src = fileName;
   }
-
   beginLoadingAudio(audioVar, fileName) {
     audioVar.src = fileName;
     audioVar.addEventListener("canplay", () => this.launchIfReady());
   }
 
   load(resources) {
-    if (!resources || !resources.length == 0) {
+    if (!resources || resources.length == 0) {
       this.prepareCanvas();
       this.showScreen("start");
       return;
     }
+
     if (resources) {
-      this.resourcesToLoad = resources;
+      this.resources = resources;
       this.resourcesToLoad = this.resources.length;
 
-      for (var i = 0; i < this.resourcesToLoad; i++) {
+      for (let i = 0; i < this.resources.length; i++) {
         if (this.resources[i].var != undefined) {
           if (this.resources[i].var.nodeName == "IMG") {
             this.beginLoadingImage(
@@ -78,6 +75,7 @@ class Gui {
               this.resources[i].file
             );
           }
+
           if (this.resources[i].var.nodeName == "AUDIO") {
             this.beginLoadingAudio(
               this.resources[i].var,
@@ -88,17 +86,23 @@ class Gui {
       }
     }
   }
-  getResources(id) {
-    return this.resources.flter((r) => r.id == id[0].var);
+
+  getResource(id) {
+    return this.resources.filter((r) => r.id === id)[0].var;
   }
 
   getResources() {
     return this.resources;
   }
-  
+
   startGame() {
     this.prepareCanvas();
     this.showScreen("canvas");
     this.gameloop.start();
+  }
+
+  stopGame() {
+    this.showScreen("end");
+    this.gameloop.stop();
   }
 }

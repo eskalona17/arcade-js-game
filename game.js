@@ -1,9 +1,13 @@
 class Game {
-  constructor() {}
+  constructor() {
+    this.fx = new Fx();
+    this.player = new Player();
+  }
 
   init() {
     console.log("game initialized");
-    console.log('hola');
+    this.fx.init();
+    this.player.init();
   }
 
   resize() {
@@ -12,9 +16,12 @@ class Game {
 
   update() {
     console.log("game updating");
+    this.player.update();
   }
 
   render() {
     console.log("game rendering");
+    this.fx.fillCanvas("#000");
+    this.player.render();
   }
 }
