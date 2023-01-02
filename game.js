@@ -3,6 +3,7 @@ class Game {
 
   init() {
     console.log("game initialized");
+    console.log('hola');
   }
 
   resize() {
