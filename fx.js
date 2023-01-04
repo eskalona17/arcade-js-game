@@ -3,6 +3,7 @@ class Fx {
     this.cnv = null;
     this.ctx = null;
   }
+
   init() {
     this.cnv = document.getElementById("canvas");
     this.ctx = this.cnv.getContext("2d");
@@ -21,16 +22,16 @@ class Fx {
   drawCircle(x, y, size, color) {
     this.ctx.beginPath();
     this.ctx.fillStyle = color;
-    this.ctx.arc(x, y, size, 0, 2 * Math.PI);
+    this.ctx.arc(x, y, size, 0, Math.PI * 2);
     this.ctx.fill();
   }
 
-  rotateAndDrawImages(image, atx, aty, angle) {
+  rotateAndDrawImage(image, atx, aty, angle) {
     if (image && this.ctx) {
       this.ctx.save();
       this.ctx.translate(atx + image.width / 2, aty + image.height / 2);
       this.ctx.rotate(angle);
-      this.ctx.drawImage(image, -image.width, -image.height / 2);
+      this.ctx.drawImage(image, -image.width / 2, -image.height / 2);
       this.ctx.restore();
     }
   }
