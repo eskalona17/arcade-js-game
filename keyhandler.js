@@ -1,4 +1,4 @@
-class keyHandler {
+class KeyHandler {
   constructor() {
     this.keys = [];
   }
@@ -17,7 +17,7 @@ class keyHandler {
       (e.key === "ArrowUp" ||
         e.key === "ArrowLeft" ||
         e.key === "ArrowRight" ||
-        e.key === "") &&
+        e.key === " ") &&
       this.keys.indexOf(e.key) == -1
     ) {
       this.keys.push(e.key);
@@ -29,7 +29,7 @@ class keyHandler {
       e.key === "ArrowUp" ||
       e.key === "ArrowLeft" ||
       e.key === "ArrowRight" ||
-      e.key === ""
+      e.key === " "
     ) {
       this.keys.splice(this.keys.indexOf(e.key));
     }

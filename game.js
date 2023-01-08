@@ -1,4 +1,5 @@
 class Game {
+  
   constructor() {
     this.fx = new Fx();
     this.player = new Player();
@@ -18,13 +19,13 @@ class Game {
   }
 
   update() {
-    console.log("game updating");
+    // console.log("game updating");
     this.player.update();
     this.asteroidService.update();
   }
 
   render() {
-    console.log("game rendering");
+    // console.log("game rendering");
     this.fx.fillCanvas("#000");
     this.player.render();
     this.asteroidService.render();
